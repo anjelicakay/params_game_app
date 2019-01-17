@@ -23,4 +23,35 @@ class Api::ParamsGamesController < ApplicationController
         
       render 'string_guessing_game.json.jbuilder'
   end    
+
+    def segment_guessing_game
+      @number = params[:number].to_i
+      correct_number = 42
+
+      if @number > correct_number
+        @message = "Guess lower"
+      elsif @number < correct_number
+        @message = "Guess higher, you can do it"
+      else
+        @message = "You got it!"  
+      end
+        
+      render 'segment_guessing_game.json.jbuilder'
+  end    
+
+  def body_guessing_game
+    @guess = params[:guess].to_i
+    correct_number = 42
+
+    if @guess > correct_number
+      @message = "Guess lower"
+    elsif @guess < correct_number
+      @message = "Guess higher, you can do it"
+    else
+      @message = "You got it!"  
+    end
+
+    render 'body_guessing_game.json.jbuilder'
+    
+  end
 end
